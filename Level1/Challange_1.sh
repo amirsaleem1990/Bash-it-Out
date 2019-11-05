@@ -25,6 +25,16 @@
 
 
 # HAL
+# https://unix.stackexchange.com/questions/114943/can-sed-replace-new-line-characters
+    # create a label via :a
+    # append the current and next line to the pattern space via N
+    # if we are before the last line, branch to the created label $!ba ($! means not to do it on the last line (as there should be one final newline)).
+    # finally the substitution replaces every newline with a comma on the pattern space (which is the whole file).
+
 # replace new line character in 'file3..' to nothing
 mv 'file3'$'\n''ok' $(ls 'file3'$'\n''ok' | sed ':a;N;$!ba;s/\n//g')
+
+# then:
+ls | wc -l
+
 
