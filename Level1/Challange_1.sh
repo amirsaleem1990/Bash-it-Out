@@ -25,4 +25,6 @@
 
 
 # HAL
-ls | wc
+# replace new line character in 'file3..' to nothing
+mv 'file3'$'\n''ok' $(ls 'file3'$'\n''ok' | sed ':a;N;$!ba;s/\n//g')
+
