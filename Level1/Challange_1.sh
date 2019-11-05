@@ -1,8 +1,12 @@
 # What I tried to achieve?
 # I wanted to count the number of files in the current directory. For that, I used the ls and wc
 # commands:
-# yesik:~/ItsFOSS$ ls -l
-# total 0
+
+# mkdir -p ItsFOSS
+# cd ItsFOSS
+# touch file1 file2 $'file3\nok'
+# clear
+# ls -l
 # -rw-r--r-- 1 yesik yesik 0 Nov 22 22:45 file1
 # -rw-r--r-- 1 yesik yesik 0 Nov 22 22:45 file2
 # -rw-r--r-- 1 yesik yesik 0 Nov 22 22:45 file3
@@ -14,7 +18,11 @@
 # important, how to achieve my goal?
 
 # Problem Solution:
-# masla ye h k <wc -l> wo number return karta h jitni lines ka output ho, or <ls> me jo output aata h us me sab sy pehly <total> ki entry hoti h, wo files ka size and folder <empty> ka size hota h (in KB), to files ki info (each file in new line) and <total> == count(files+folders)+1 hota h, to jab 3 files hon gi to <ls -l> me 4 lines print hon gi, or jab <wc> sy in lines ko count karen gy to <4> answer aay ga.
+# <wc> wo print karta h k agar <wc> k input ko print kar dya jay to utni lines me print ho
+# <ls -l> sab sy pehly directory files (summaried) <total> (in KB) print karta h, or phir each file and directory ko alag line me print karta h.
+
+# masla ye h k 1 file <file3\nok> me new line character h, jo k jab <ls -l> sy aata h to file name 2 lines me print hota h, to jab ye <wc> me input hota h to 1 lines <total> ki, 3 lines 3 files k lye, or <file3\nok> ka last element aakhri line me.
+
 
 # HAL
 ls | wc
